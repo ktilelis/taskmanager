@@ -1,0 +1,9 @@
+<section>
+    <header>
+        <span i18n>Task List</span>
+        <input type="button" value="+" (click)="addTask()">
+    </header>
+    <ul *ngFor="let item of taskItems">
+        <li>{{item.name}}</li>
+    </ul>
+</section>
