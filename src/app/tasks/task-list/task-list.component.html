@@ -1,9 +1,13 @@
 <section>
     <header>
-        <span i18n>Task List</span>
-        <input type="button" value="+" (click)="addTask()">
+        <h3 i18n>Task List</h3>
+        <input
+            placeholder="Enter task description here"
+            (keyup.enter)="addTask()"
+            [(ngModel)]="taskDescription"
+        >
     </header>
     <ul *ngFor="let item of taskItems">
-        <li>{{item.name}}</li>
+        <li>{{item.id}}</li>
     </ul>
 </section>

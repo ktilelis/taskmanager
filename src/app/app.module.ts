@@ -4,12 +4,14 @@ import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { storeFreeze } from 'ngrx-store-freeze';
 
 import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { TasksModule } from './tasks/tasks.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
     declarations: [
@@ -17,14 +19,16 @@ import { TasksModule } from './tasks/tasks.module';
     ],
     imports: [
         BrowserModule,
-        StoreModule.forRoot({}),
+        StoreModule.forRoot({},
+            { metaReducers: !environment.production ? [ storeFreeze ] : [] }),
         EffectsModule.forRoot([]),
         !environment.production ? StoreDevtoolsModule.instrument() : [],
         DashboardModule,
-        TasksModule
+        TasksModule,
+        SharedModule
     ],
     providers: [],
-    bootstrap: [AppComponent]
+    bootstrap: [ AppComponent ]
 })
 export class AppModule {
 }
