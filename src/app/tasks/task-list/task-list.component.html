@@ -1,13 +1,13 @@
 <section>
     <header>
-        <h3 i18n>Task List</h3>
+        <h3 class="task-list-title" i18n>Task List</h3>
         <input
             placeholder="Enter task description here"
             (keyup.enter)="addTask()"
             [(ngModel)]="taskDescription"
         >
     </header>
-    <ul *ngFor="let item of taskItems">
-        <li>{{item.id}}</li>
+    <ul *ngFor="let item of tasks$ | async" class="task-list">
+        <li (click)="removeTask(item.id)" class="task-item">{{item.id}}</li>
     </ul>
 </section>

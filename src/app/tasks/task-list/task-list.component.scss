@@ -1,0 +1,8 @@
+:host {
+    & .task-list {
+        list-style: none;
+
+        & .task-item {
+        }
+    }
+}

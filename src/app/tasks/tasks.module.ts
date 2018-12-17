@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { StoreModule } from '@ngrx/store';
 
-import * as fromTasks from './+state/tasks.reducers';
+import * as fromTasks from './+state/tasks.reducer';
 import { tasksInitialState } from './+state/tasks.interfaces';
 import { TaskListComponent } from './task-list/task-list.component';
 
