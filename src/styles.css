@@ -1,6 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 body, input, textarea, button {
-    font-family: 'Merriweather', Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, Helvetica, Arial, sans-serif;
 }
 
 html, body {

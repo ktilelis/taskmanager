@@ -6,7 +6,7 @@ import { select, Store } from '@ngrx/store';
 import { generateUuid } from '@shared/uuid-generator';
 
 import { Task } from '../+state/tasks.interfaces';
-import { AddTask, RemoveTask } from '../+state/tasks.actions';
+import { AddTask, RemoveTask, UpdateTaskStatus } from '../+state/tasks.actions';
 import * as fromTasks from '../+state/tasks.reducer';
 
 @Component({
@@ -43,5 +43,14 @@ export class TaskListComponent implements OnInit {
 
     removeTask(taskId: string) {
         this.store.dispatch(new RemoveTask(taskId));
+    }
+
+    toggleTaskStatus(task: Task) {
+        const newStatus = task.status === 'PENDING' ? 'COMPLETED' : 'PENDING';
+        this.store.dispatch(new UpdateTaskStatus(task.id, newStatus));
+    }
+
+    toggleSelectAll() {
+
     }
 }

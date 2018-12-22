@@ -1,5 +1,6 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -25,7 +26,8 @@ import { SharedModule } from './shared/shared.module';
         !environment.production ? StoreDevtoolsModule.instrument() : [],
         DashboardModule,
         TasksModule,
-        SharedModule
+        SharedModule,
+        BrowserAnimationsModule
     ],
     providers: [],
     bootstrap: [ AppComponent ]

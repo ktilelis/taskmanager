@@ -1,8 +1,60 @@
 :host {
+    & .task-description {
+        width: 50%;
+    }
+
+    & .status-toggle {
+        align-self: center;
+    }
+
+    & .toolbar {
+        display: flex;
+        flex-direction: row;
+        width: 50%;
+        justify-content: space-between;
+        box-sizing: border-box;
+    }
+
     & .task-list {
         list-style: none;
+        padding-inline-start: 0;
 
         & .task-item {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            box-sizing: border-box;
+            width: 50%;
+            margin: 5px 0;
+            border-bottom: lightgrey 2px solid;
+            font-size: 1em;
+
+            &:hover {
+                border-bottom: mediumblue 2px solid;
+            }
+
+            & .remove-task {
+                font-size: 1.5em;
+                font-weight: bold;
+                padding: 9px 15px;
+                color: darkred;
+                cursor: pointer;
+
+                &::after {
+                    content: '\2716'
+                }
+
+                &:hover::after {
+                    color: red;
+                    transition: color 0.5s ease-out;
+                }
+            }
+
+            & .task-description {
+                padding-left: 10px;
+                flex-grow: 2;
+                align-self: center;
+            }
         }
     }
 }
