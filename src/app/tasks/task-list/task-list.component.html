@@ -11,13 +11,14 @@
 
     </header>
     <section class="toolbar">
-        <mat-checkbox title="Mark all complete"></mat-checkbox>
-        <span title="select-all-toggle"
-              class="status-toggle"
-              [class.checked]=true
-              (change)="toggleSelectAll()">
-        </span>
-        <span>Total tasks: {{(tasks$ | async).length}}</span>
+        <mat-checkbox title="Mark all complete"
+                      [checked]="toggleAllStatus"
+                      [disabled]="(tasks$ | async)?.length === 0 "
+                      (change)="toggleSelectAll()">
+        </mat-checkbox>
+        <span>Pending: {{(pendingTasks$ | async).length}}</span>
+        <span>Completed: {{(completedTasks$ | async).length}}</span>
+        <span>Total: {{(tasks$ | async).length}}</span>
     </section>
     <ul class="task-list">
         <li *ngFor="let item of tasks$ | async" class="task-item">
