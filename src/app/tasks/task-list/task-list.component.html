@@ -16,19 +16,33 @@
                       [disabled]="(tasks$ | async)?.length === 0 "
                       (change)="toggleSelectAll()">
         </mat-checkbox>
-        <span>Pending: {{(pendingTasks$ | async).length}}</span>
-        <span>Completed: {{(completedTasks$ | async).length}}</span>
-        <span>Total: {{(tasks$ | async).length}}</span>
+        <section class="list-filter">
+            <label for="task-status-filter">Display</label>
+            <select id="task-status-filter" [(ngModel)]="statusFilter">
+                <option value="ALL" selected>All</option>
+                <option value="COMPLETED">Completed</option>
+                <option value="PENDING">Pending</option>
+            </select>
+        </section>
+        <section class="counters">
+            <span>Pending: {{(pendingTasks$ | async).length}}</span>
+            <span>Completed: {{(completedTasks$ | async).length}}</span>
+            <span>Total: {{(tasks$ | async).length}}</span>
+        </section>
     </section>
     <ul class="task-list">
-        <li *ngFor="let item of tasks$ | async" class="task-item">
-            <mat-checkbox title="Mark task complete"
-                          class="status-toggle"
-                          [checked]="item.status === 'COMPLETED'"
-                          (change)="toggleTaskStatus(item)"
-            ></mat-checkbox>
-            <span class="task-description">{{item.description}}</span>
-            <span class="remove-task" (click)="removeTask(item.id)"></span>
-        </li>
+        <ng-container *ngFor="let item of tasks$ | async">
+            <li *ngIf="statusFilter === 'ALL' || item.status === statusFilter" class="task-item">
+                <mat-checkbox title="Mark task complete"
+                              class="status-toggle"
+                              [checked]="item.status === 'COMPLETED'"
+                              (change)="toggleTaskStatus(item)"
+                ></mat-checkbox>
+                <span class="task-description">{{item.description}}</span>
+                <span class="remove-task" (click)="removeTask(item.id)"></span>
+            </li>
+        </ng-container>
+
+
     </ul>
 </section>

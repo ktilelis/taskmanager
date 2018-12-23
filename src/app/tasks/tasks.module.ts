@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { MatCheckboxModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { MatCheckboxModule, MatFormFieldModule, MatInputModule, MatSelectModule } from '@angular/material';
 
 import { StoreModule } from '@ngrx/store';
 
@@ -16,7 +16,8 @@ import { TaskListComponent } from './task-list/task-list.component';
         StoreModule.forFeature('tasks', fromTasks.reducer, { initialState: tasksInitialState }),
         MatCheckboxModule,
         MatFormFieldModule,
-        MatInputModule
+        MatInputModule,
+        MatSelectModule
     ],
     declarations: [ TaskListComponent ],
     exports: [ TaskListComponent ]

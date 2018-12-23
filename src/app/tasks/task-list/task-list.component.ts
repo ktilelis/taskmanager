@@ -7,7 +7,7 @@ import { select, Store } from '@ngrx/store';
 
 import { generateUuid } from '@shared/uuid-generator';
 
-import { Task } from '../+state/tasks.interfaces';
+import { Task, TaskStatus } from '../+state/tasks.interfaces';
 import { AddTask, RemoveTask, ToggleAllTasksStatus, UpdateTaskStatus } from '../+state/tasks.actions';
 import * as fromTasks from '../+state/tasks.reducer';
 
@@ -26,6 +26,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
 
     taskDescription: string;
     toggleAllStatus = false;
+    statusFilter: TaskStatus | 'ALL' = 'ALL';
 
     constructor(private store: Store<any>) {
     }

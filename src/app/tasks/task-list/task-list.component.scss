@@ -13,6 +13,27 @@
         width: 50%;
         justify-content: space-between;
         box-sizing: border-box;
+        font-size: 0.9em;
+        color: darkgray;
+
+        & .list-filter > select {
+            border: none;
+            border-bottom: 1px solid darkgray;
+            outline: none;
+
+            &:hover {
+                border-bottom: 1px solid mediumblue;
+            }
+        }
+
+        & .counters {
+            display: flex;
+            justify-content: space-between;
+
+            & > span {
+                padding: 0 5px;
+            }
+        }
     }
 
     & .task-list {
